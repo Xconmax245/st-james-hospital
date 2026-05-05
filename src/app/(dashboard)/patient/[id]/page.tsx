@@ -9,11 +9,18 @@ import { MapPin, Navigation } from "lucide-react";
 const DEMO_DATA = {
   id: "PT-256Z-005",
   name: "Marcella Sachs",
-  status: "Post-Surgical Monitoring",
-  admissionDate: "03 MAY 2026",
+  status: "Discharged",
+  admissionDate: "19 APR 2026",
   reason: "Advanced Orthopedic Reconstruction (Multi-fragmentary Leg Fracture)",
-  estDischarge: "10 MAY 2026",
-  currentStep: 2,
+  estDischarge: "30 APR 2026",
+  currentStep: 4,
+  timeline: [
+    { label: "Admitted", date: "Apr 19" },
+    { label: "Diagnosed", date: "Apr 20" },
+    { label: "Treatment", date: "Apr 21" },
+    { label: "Recovering", date: "Completed" },
+    { label: "Discharged", date: "Apr 30" },
+  ],
   staff: [
     { 
       name: "Solomon .O", 
@@ -25,9 +32,10 @@ const DEMO_DATA = {
     { 
       name: "Eleazar .A", 
       role: "Nurse" as const, 
-      responsibility: "Post-Operative Care Specialist", 
+      responsibility: "Home-based redressing and post-op care duties", 
       experience: "9 Years Exp.", 
-      onDuty: true 
+      onDuty: true,
+      dutyStatus: "Home Service"
     },
     { 
       name: "Daniel .N", 
@@ -48,21 +56,21 @@ const DEMO_DATA = {
     {
       author: "Solomon .O",
       role: "Lead Physician",
-      date: "04 MAY · 10:45 AM",
-      content: "Patient is recovering well from the orthopedic reconstruction of the multi-fragmentary leg fracture. Internal fixation is stable. We will continue pain management protocol and initiate early toe-touch weight-bearing exercises this afternoon.",
+      date: "30 APR · 09:15 AM",
+      content: "Final clinical assessment complete. Patient has met all discharge criteria. The leg fracture is well-stabilized, and the patient is proficient in assisted mobilization. Discharge to home with home-based PT follow-up confirmed.",
       pinned: true
     },
     {
       author: "Eleazar .A",
       role: "Primary Nurse",
-      date: "04 MAY · 03:20 PM",
-      content: "Patient successfully completed first 10-meter assisted walk using a walker. Pain reported at 3/10 post-activity. Surgical site on the lower limb is clean with no signs of inflammation.",
+      date: "29 APR · 04:30 PM",
+      content: "Discharge education completed with patient and family. Wound site is healing excellently with no drainage. Mobility is stable using a cane.",
     },
     {
       author: "Solomon .O",
       role: "Lead Physician",
-      date: "03 MAY · 08:00 PM",
-      content: "Complex fracture stabilization completed without complications. Patient transferred to post-surgical recovery unit. Neurovascular status of the distal limb remains intact and within normal limits.",
+      date: "21 APR · 08:00 PM",
+      content: "Complex fracture stabilization completed without complications. Patient transferred to post-surgical recovery unit. Neurovascular status remains intact.",
     }
   ],
   billing: [
@@ -71,28 +79,28 @@ const DEMO_DATA = {
       category: "Professional Services", 
       amount: 1250, 
       status: "Paid" as const, 
-      date: "01 MAY 2026" 
+      date: "19 APR 2026" 
     },
     { 
       description: "Surgical Suite - Level 6", 
       category: "Facility Fees", 
       amount: 42000, 
       status: "Paid" as const, 
-      date: "03 MAY 2026" 
+      date: "21 APR 2026" 
     },
     { 
-      description: "Post-Op Physical Therapy (Initial)", 
+      description: "Post-Op Physical Therapy", 
       category: "Rehabilitation", 
-      amount: 850, 
-      status: "Pending" as const, 
-      date: "04 MAY 2026" 
+      amount: 2850, 
+      status: "Paid" as const, 
+      date: "28 APR 2026" 
     },
     { 
       description: "Acute Inpatient Stay (Private)", 
       category: "Accommodation", 
-      amount: 4500, 
-      status: "Pending" as const, 
-      date: "08 MAY 2026" 
+      amount: 15500, 
+      status: "Paid" as const, 
+      date: "30 APR 2026" 
     },
   ]
 };
@@ -122,6 +130,7 @@ export default function PatientPage({ params }: { params: { id: string } }) {
         reason={data.reason}
         estDischarge={data.estDischarge}
         currentStep={data.currentStep}
+        timeline={data.timeline}
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">

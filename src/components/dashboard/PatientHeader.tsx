@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+interface TimelineStep {
+  label: string;
+  date: string;
+}
+
 interface PatientHeaderProps {
   name: string;
   status: string;
@@ -11,9 +16,10 @@ interface PatientHeaderProps {
   reason: string;
   estDischarge?: string;
   currentStep: number; // 0–4
+  timeline?: TimelineStep[];
 }
 
-const steps = [
+const defaultSteps = [
   { label: "Admitted", date: "May 01" },
   { label: "Diagnosed", date: "May 02" },
   { label: "Treatment", date: "May 03" },
@@ -28,7 +34,9 @@ export default function PatientHeader({
   reason,
   estDischarge,
   currentStep,
+  timeline,
 }: PatientHeaderProps) {
+  const steps = timeline || defaultSteps;
   const initials = name
     .split(" ")
     .map((n) => n[0])

@@ -9,6 +9,7 @@ interface Staff {
   responsibility: string;
   experience: string;
   onDuty: boolean;
+  dutyStatus?: string;
 }
 
 interface PersonnelGridProps {
@@ -94,7 +95,7 @@ export default function PersonnelGrid({ staff }: PersonnelGridProps) {
                     <div className="flex items-center gap-1.5 px-2 py-0.5 bg-gold/10">
                       <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
                       <span className="text-[8px] font-bold text-navy uppercase tracking-[0.1em]">
-                        On Duty Today
+                        {person.dutyStatus || "On Duty Today"}
                       </span>
                     </div>
                   )}
