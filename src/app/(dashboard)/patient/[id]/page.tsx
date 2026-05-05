@@ -11,7 +11,7 @@ const DEMO_DATA = {
   name: "Marcella Sachs",
   status: "Post-Surgical Monitoring",
   admissionDate: "03 MAY 2026",
-  reason: "Advanced Orthopedic Reconstruction (Right Hip Replacement)",
+  reason: "Advanced Orthopedic Reconstruction (Multi-fragmentary Leg Fracture)",
   estDischarge: "10 MAY 2026",
   currentStep: 2,
   staff: [
@@ -49,20 +49,20 @@ const DEMO_DATA = {
       author: "Solomon .O",
       role: "Lead Physician",
       date: "04 MAY · 10:45 AM",
-      content: "Patient is recovering well from the orthopedic reconstruction. Post-op vitals are within normal range. We will continue pain management protocol and initiate early mobilization exercises this afternoon.",
+      content: "Patient is recovering well from the orthopedic reconstruction of the multi-fragmentary leg fracture. Internal fixation is stable. We will continue pain management protocol and initiate early toe-touch weight-bearing exercises this afternoon.",
       pinned: true
     },
     {
       author: "Eleazar .A",
       role: "Primary Nurse",
       date: "04 MAY · 03:20 PM",
-      content: "Patient successfully completed first 10-meter walk with assistance. Pain reported at 3/10 post-activity. Surgical site dressing is clean and dry.",
+      content: "Patient successfully completed first 10-meter assisted walk using a walker. Pain reported at 3/10 post-activity. Surgical site on the lower limb is clean with no signs of inflammation.",
     },
     {
       author: "Solomon .O",
       role: "Lead Physician",
       date: "03 MAY · 08:00 PM",
-      content: "Surgery completed without complications. Patient transferred to post-surgical recovery unit. Immediate post-op labs look excellent.",
+      content: "Complex fracture stabilization completed without complications. Patient transferred to post-surgical recovery unit. Neurovascular status of the distal limb remains intact and within normal limits.",
     }
   ],
   billing: [
