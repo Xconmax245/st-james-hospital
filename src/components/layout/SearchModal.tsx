@@ -104,7 +104,7 @@ export const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                 <span className="flex items-center gap-1"><Command size={10} /> Navigate</span>
                 <span className="flex items-center gap-1">Esc Exit</span>
               </div>
-              <span className="text-gold">St James&apos;s Search</span>
+              <span className="text-gold">Institutional Search</span>
             </div>
           </motion.div>
         </div>

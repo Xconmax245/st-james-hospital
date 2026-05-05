@@ -26,8 +26,8 @@ const mono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "St James's Hospital",
-  description: "Ireland's largest acute academic teaching hospital.",
+  title: "NYU Langone Health | Tisch Hospital",
+  description: "Advanced clinical care and research at NYU Langone Tisch Hospital.",
 };
 
 export default function RootLayout({

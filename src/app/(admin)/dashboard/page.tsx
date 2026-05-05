@@ -15,10 +15,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const patients = [
-  { id: "SJH-001", name: "John Doe", ward: "St. John's", status: "Inpatient", admission: "2026-05-01" },
-  { id: "SJH-002", name: "Jane Smith", ward: "Cardiology", status: "Observation", admission: "2026-05-03" },
-  { id: "SJH-003", name: "Robert Brown", ward: "Emergency", status: "Critical", admission: "2026-05-04" },
-  { id: "SJH-004", name: "Emily White", ward: "St. John's", status: "Discharged", admission: "2026-04-28" },
+  { id: "NYU-001", name: "John Doe", ward: "Kimmel Pavillion", status: "Inpatient", admission: "2026-05-01" },
+  { id: "NYU-002", name: "Jane Smith", ward: "Cardiology", status: "Observation", admission: "2026-05-03" },
+  { id: "NYU-003", name: "Robert Brown", ward: "Emergency", status: "Critical", admission: "2026-05-04" },
+  { id: "NYU-004", name: "Emily White", ward: "Tisch-6", status: "Discharged", admission: "2026-04-28" },
 ];
 
 export default function AdminDashboard() {
@@ -29,10 +29,10 @@ export default function AdminDashboard() {
       {/* Sidebar */}
       <aside className="w-72 bg-navy text-white flex flex-col shrink-0 border-r border-white/5">
         <div className="p-space-4 border-b border-white/5 flex items-center gap-space-2">
-          <div className="w-10 h-10 border border-gold/30 flex items-center justify-center text-gold font-display font-bold">SJ</div>
+          <div className="w-10 h-10 border border-gold/30 flex items-center justify-center text-gold font-display font-bold">NY</div>
           <div>
             <p className="text-white font-display text-lg leading-tight tracking-tight">Admin Console</p>
-            <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] font-bold">St James&apos;s Hospital</p>
+            <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] font-bold">NYU Langone Tisch Hospital</p>
           </div>
         </div>
 

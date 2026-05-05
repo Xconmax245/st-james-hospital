@@ -37,7 +37,7 @@ const DEMO_DATA = {
       onDuty: false 
     },
     { 
-      name: "Dr. James Wilson", 
+      name: "Dr. Robert Wilson", 
       role: "Specialist" as const, 
       responsibility: "Physical Rehabilitation Lead", 
       experience: "12 Years Exp.", 
