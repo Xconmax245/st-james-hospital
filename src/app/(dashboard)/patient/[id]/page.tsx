@@ -100,7 +100,7 @@ const DEMO_DATA = {
       category: "Accommodation", 
       amount: 15000, 
       status: "Pending" as const, 
-      date: "30 APR 2026" 
+      date: "15 MAY 2026" 
     },
   ]
 };
