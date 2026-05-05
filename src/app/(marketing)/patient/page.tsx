@@ -11,10 +11,6 @@ export default function PatientLanding() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
-  const handleDemoAccess = () => {
-    router.push("/patient/PT-256Z-005");
-  };
-
   const handleIdSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Allow alphanumeric IDs like PT-256Z-005
@@ -45,26 +41,26 @@ export default function PatientLanding() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-space-4" data-aos="fade-up" data-aos-delay="100">
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="group bg-white p-space-6 border border-white/10 hover:border-gold transition-all text-left flex flex-col justify-between min-h-[180px]"
+            className="group bg-white p-space-6 border border-white/10 hover:border-gold transition-all text-left flex flex-col justify-between min-h-[180px] shadow-lg"
           >
             <User className="text-navy mb-space-4" size={32} />
             <div>
-              <span className="text-navy font-bold text-lg block mb-1">Enter Patient ID</span>
+              <span className="text-navy font-bold text-lg block mb-1">Secure Patient Login</span>
               <span className="text-navy/40 text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
-                Secure Access <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                Access Active Record <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
           </button>
 
           <button 
-            onClick={handleDemoAccess}
-            className="group bg-navy-light p-space-6 border border-white/5 hover:border-gold transition-all text-left flex flex-col justify-between min-h-[180px]"
+            onClick={() => router.push("/aboutus")}
+            className="group bg-navy-light p-space-6 border border-white/5 hover:border-gold transition-all text-left flex flex-col justify-between min-h-[180px] shadow-lg"
           >
             <ShieldCheck className="text-gold mb-space-4" size={32} />
             <div>
-              <span className="text-white font-bold text-lg block mb-1">Marcella Sachs Demo</span>
+              <span className="text-white font-bold text-lg block mb-1">Request Digital ID</span>
               <span className="text-gold/60 text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
-                Code: PT-256Z-005 <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                Institutional Enrollment <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
           </button>
