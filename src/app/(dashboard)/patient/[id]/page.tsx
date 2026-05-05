@@ -56,6 +56,12 @@ const DEMO_DATA = {
     {
       author: "Solomon .O",
       role: "Lead Physician",
+      date: "05 MAY · 11:30 AM",
+      content: "Patient is under observation for suspected gastrointestinal distress. Monitoring for potential ulcer activity. Will reassess clinical pathway if symptoms persist.",
+    },
+    {
+      author: "Solomon .O",
+      role: "Lead Physician",
       date: "30 APR · 09:15 AM",
       content: "Final clinical assessment complete. Patient has met all discharge criteria. The leg fracture is well-stabilized, and the patient is proficient in assisted mobilization. Discharge to home with home-based PT follow-up confirmed.",
       pinned: true
@@ -101,6 +107,13 @@ const DEMO_DATA = {
       amount: 15000, 
       status: "Pending" as const, 
       date: "15 MAY 2026" 
+    },
+    { 
+      description: "Perforated Ulcer Repair", 
+      category: "Future Provision", 
+      amount: 45000, 
+      status: "Estimated" as const, 
+      date: "FUTURE" 
     },
   ]
 };

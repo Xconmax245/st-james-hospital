@@ -15,7 +15,7 @@ interface BillItem {
   description: string;
   category: string;
   amount: number;
-  status: "Paid" | "Pending";
+  status: "Paid" | "Pending" | "Estimated";
   date: string;
 }
 
@@ -43,13 +43,15 @@ export default function BillingAccordion({ items }: BillingAccordionProps) {
     );
   }
 
-  const totalBilled  = items.reduce((s, i) => s + i.amount, 0);
-  const totalPaid    = items.filter((i) => i.status === "Paid").reduce((s, i) => s + i.amount, 0);
+  const currentItems = items.filter(i => i.status !== "Estimated");
+  const totalBilled  = currentItems.reduce((s, i) => s + i.amount, 0);
+  const totalPaid    = currentItems.filter((i) => i.status === "Paid").reduce((s, i) => s + i.amount, 0);
   const totalPending = totalBilled - totalPaid;
-  const paidPct      = (totalPaid / totalBilled) * 100;
+  const paidPct      = totalBilled > 0 ? (totalPaid / totalBilled) * 100 : 0;
 
-  const pendingItems = items.filter((i) => i.status === "Pending");
-  const paidItems    = items.filter((i) => i.status === "Paid");
+  const pendingItems   = items.filter((i) => i.status === "Pending");
+  const paidItems      = items.filter((i) => i.status === "Paid");
+  const estimatedItems = items.filter((i) => i.status === "Estimated");
 
   const fmt = (amount: number) =>
     new Intl.NumberFormat("en-US", {
@@ -57,6 +59,8 @@ export default function BillingAccordion({ items }: BillingAccordionProps) {
       currency: "USD",
       minimumFractionDigits: 0,
     }).format(amount);
+
+  const [estOpen, setEstOpen] = useState(false);
 
   return (
     <section id="billing">
@@ -173,6 +177,63 @@ export default function BillingAccordion({ items }: BillingAccordionProps) {
             )}
           </div>
         </div>
+
+        {/* Future Estimates Section */}
+        {estimatedItems.length > 0 && (
+          <div className="border border-gold/30 overflow-hidden bg-gold/5">
+            <button
+              onClick={() => setEstOpen(!estOpen)}
+              className="w-full px-4 py-3 flex items-center justify-between hover:bg-gold/10 transition-colors no-print"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-navy">
+                  Institutional Remarks
+                </span>
+                <span className="bg-gold text-navy text-[8px] font-bold px-1.5 py-0.5">
+                  {estimatedItems.length}
+                </span>
+              </div>
+              {estOpen ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+            </button>
+
+            <div
+              className={cn(
+                "bg-white/50 transition-all duration-300",
+                estOpen ? "block" : "hidden",
+                "print:block print:border-t"
+              )}
+            >
+              {estimatedItems.map((item, i) => (
+                <div
+                  key={i}
+                  className="px-4 py-3 border-b border-gold/10 last:border-0 flex flex-wrap items-center justify-between gap-3"
+                >
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-bold text-navy mb-0.5 truncate italic">
+                      {item.description}
+                    </p>
+                    <p className="text-[9px] text-navy/40 uppercase tracking-widest">
+                      {item.category}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-5 text-right shrink-0">
+                    <div>
+                      <p className="text-[8px] text-navy/40 uppercase tracking-widest mb-0.5">
+                        Est. Provision
+                      </p>
+                      <p className="text-[10px] font-mono font-bold text-gold">
+                        {item.date}
+                      </p>
+                    </div>
+                    <p className="text-base font-display text-navy opacity-60">
+                      {fmt(item.amount)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Paid History */}
         <div className="border border-navy/10 overflow-hidden">
