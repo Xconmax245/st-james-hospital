@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Colors */
+  --navy: #0F2145;
+  --navy-light: #1B3A6E;
+  --gold: #F5C000;
+  --warm-white: #FFFDF5;
+  --surface: #F4F3EE;
+  --alert: #D32F2F;
+  --text-body: #1E1E1E;
+  --text-muted: #6B6B6B;
+
+  /* Spacing System (8px Grid) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 80px;
+  --space-8: 96px;
+  --space-9: 128px;
+  --space-10: 160px;
+
+  /* Layout */
+  --max-content: 1280px;
+  --gutter-xs: 1rem;
+  --gutter-sm: 1.25rem;
+  --gutter-md: 2rem;
+  --gutter-lg: 3rem;
+  --gutter-xl: 4rem;
+
+  /* Typography Scale (Fluid) */
+  --h1: clamp(2rem, 5vw, 3.75rem);
+  --h2: clamp(1.5rem, 3.5vw, 2.5rem);
+  --h3: clamp(1.125rem, 2vw, 1.5rem);
+  --body: clamp(0.9375rem, 1vw, 1rem);
+  --small: 0.8125rem;
+
+  /* CareView Dashboard Colors */
+  --amber: #F5C000;
+  --amber-light: #FFB800;
+  --mist: #F4F3EE;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-warm-white text-body antialiased selection:bg-gold selection:text-navy;
+    font-family: var(--font-sans), sans-serif;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display), serif;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    @apply text-navy;
+  }
+
+  h1 { font-size: var(--h1); }
+  h2 { font-size: var(--h2); line-height: 1.25; }
+  h3 { font-size: var(--h3); }
+
+  p {
+    max-width: 68ch;
+  }
+
+  /* Thin Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy) transparent;
+  }
+}
+
+@layer components {
+  .container {
+    width: min(100%, var(--max-content));
+    margin-inline: auto;
+    padding-inline: var(--gutter-md);
+  }
+
+  /* Gold Reveal Hover Signature */
+  .premium-card, .nav-link, .quick-tile {
+    @apply border-t-[3px] border-t-transparent transition-colors duration-150 ease-out;
+  }
+  
+  .premium-card:hover, .nav-link:hover, .quick-tile:hover {
+    @apply border-t-gold;
+  }
+
+  /* Buttons - Sharp/Rect (max 2px) */
+  .btn {
+    @apply inline-flex items-center justify-center px-space-4 py-space-3 font-sans font-bold uppercase tracking-[0.1em] text-[11px] transition-all duration-300 rounded-[2px] cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-navy text-white hover:bg-gold hover:text-navy border border-navy/10 active:scale-[0.98];
+  }
+
+  .btn-gold {
+    @apply bg-gold text-navy hover:bg-[#e6b400] active:scale-[0.97];
+  }
+
+  /* Bilingual Treatment */
+  .irish-label {
+    @apply opacity-65 font-display;
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--navy);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out;
+  display: none;
+}
+
+@media (pointer: fine) {
+  .custom-cursor {
+    display: block;
+  }
+  body:has(a:hover, button:hover) .custom-cursor {
+    transform: scale(4);
+    background: transparent;
+    border: 1px solid var(--navy);
+  }
+}
+
+/* Surface Section Texture */
+.surface-texture {
+  background-color: var(--surface);
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%230F2145' fill-opacity='0.02'/%3E%3C/svg%3E");
+  padding-block: var(--space-9);
+}
+
+/* Section Rhythm */
+section {
+  padding-block: var(--space-7);
+}
+
+@media (max-width: 767px) {
+  section {
+    padding-block: var(--space-6);
+  }
+}
+
+/* Hero Padding */
+.hero-padding {
+  padding-block: var(--space-8);
+}
+
+/* Dashboard Layout Overrides */
+/* Prevent global section padding from wrecking dashboard component spacing */
+.dashboard-content section {
+  padding-block: 0;
+}
+
+/* CareView Specifics */
+.bg-amber-glow {
+  background: linear-gradient(135deg, #F5C000 0%, #FF9900 100%);
+}
+
+.dashboard-sidebar-active {
+  border-left: 4px solid var(--amber);
+}
+
+/* Print Overrides */
+@media print {
+  header, footer, .dashboard-sidebar, .demo-banner, .btn-print-hide, .no-print {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .container {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .print-expand {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .print-white-bg {
+    background: white !important;
+    border: 1px solid #eee !important;
+    box-shadow: none !important;
+  }
+
+  .print-header {
+    display: block !important;
+    border-bottom: 2px solid #0F2145;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .print-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: #666;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+  }
+}
+
+.print-header, .print-footer {
+  display: none;
+}
