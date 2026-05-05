@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, GraduationCap, Laptop, Sparkles, TrendingUp, UserCheck, Heart, ChevronRight, MapPin } from "lucide-react";
+import { Briefcase, GraduationCap, Laptop, TrendingUp, UserCheck, Heart, ChevronRight, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 

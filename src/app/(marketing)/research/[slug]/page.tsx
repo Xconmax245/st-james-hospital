@@ -1,11 +1,23 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { ArrowLeft, Microscope, Zap, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { ArrowLeft, Zap, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const researchData: Record<string, any> = {
+interface ResearchSection {
+  title: string;
+  val: string;
+}
+
+interface ResearchInitiative {
+  title: string;
+  tagline: string;
+  overview: string;
+  sections: ResearchSection[];
+}
+
+const researchData: Record<string, ResearchInitiative> = {
   "clinical-trials": {
     title: "Clinical Trials",
     tagline: "Advancing Patient Outcomes",
@@ -64,7 +76,7 @@ export default function ResearchDetailPage() {
       <section className="py-24 bg-white">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            {data.sections.map((s: any, i: number) => (
+            {data.sections.map((s, i) => (
               <div 
                 key={i} 
                 className="p-12 bg-warm-white border border-navy/5 text-center flex flex-col items-center group hover:bg-navy transition-all duration-500"

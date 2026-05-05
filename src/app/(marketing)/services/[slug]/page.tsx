@@ -1,11 +1,25 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, CheckCircle2, Calendar, Users, MapPin, ChevronRight } from "lucide-react";
+import { useParams } from "next/navigation";
+import { ArrowLeft, CheckCircle2, Calendar, MapPin, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const serviceData: Record<string, any> = {
+interface ServiceStats {
+  patients: string;
+  success: string;
+  staff: string;
+}
+
+interface ServiceDetail {
+  title: string;
+  tagline: string;
+  overview: string;
+  highlights: string[];
+  stats: ServiceStats;
+}
+
+const serviceData: Record<string, ServiceDetail> = {
   "cardiovascular": {
     title: "Cardiovascular Care",
     tagline: "Heart & Vascular Center of Excellence",

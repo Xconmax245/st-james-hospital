@@ -1,6 +1,6 @@
 "use client";
 
-import { Microscope, FlaskConical, TestTube, Dna, FileSearch, Share2, ArrowRight } from "lucide-react";
+import { Microscope, FlaskConical, Dna, FileSearch, Share2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 

@@ -4,8 +4,7 @@ import PatientHeader from "@/components/dashboard/PatientHeader";
 import PersonnelGrid from "@/components/dashboard/PersonnelGrid";
 import NotesFeed from "@/components/dashboard/NotesFeed";
 import BillingAccordion from "@/components/dashboard/BillingAccordion";
-import { Info, MapPin, Navigation } from "lucide-react";
-import Link from "next/link";
+import { MapPin, Navigation } from "lucide-react";
 
 const DEMO_DATA = {
   id: "PT-256Z-005",

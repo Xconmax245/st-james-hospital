@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, Search, Filter, MapPin, Clock, ArrowRight, ArrowLeft } from "lucide-react";
+import { Search, Filter, MapPin, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 

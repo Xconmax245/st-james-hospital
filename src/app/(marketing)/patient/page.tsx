@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { User, ArrowRight, ShieldCheck, Info } from "lucide-react";
+import { User, ArrowRight, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function PatientLanding() {

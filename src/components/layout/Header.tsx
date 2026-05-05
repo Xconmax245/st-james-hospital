@@ -6,6 +6,7 @@ import { Search, Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SearchModal } from "./SearchModal";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -79,7 +80,7 @@ export default function Header() {
               <Link href="/" className="flex items-center gap-4 shrink-0 group">
                 {/* Brand Logo Image */}
                 <div className="relative w-12 h-12 flex items-center justify-center shrink-0 overflow-hidden bg-white rounded-sm p-1 shadow-sm group-hover:shadow-md transition-all">
-                  <img src="/download.png" alt="NYU Langone Logo" className="w-full h-full object-contain" />
+                  <Image src="/download.png" alt="NYU Langone Logo" fill className="object-contain p-1" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[8px] uppercase tracking-[0.3em] text-gold font-bold leading-none mb-1">
