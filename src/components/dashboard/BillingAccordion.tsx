@@ -26,22 +26,7 @@ interface BillingAccordionProps {
 export default function BillingAccordion({ items }: BillingAccordionProps) {
   const [pendingOpen, setPendingOpen] = useState(true);
   const [paidOpen, setPaidOpen] = useState(false);
-
-  if (items.length === 0) {
-    return (
-      <section
-        id="billing"
-        className="bg-white border border-navy/10 p-8 text-center print-white-bg"
-      >
-        <div className="flex flex-col items-center gap-3 opacity-30">
-          <Receipt size={48} strokeWidth={1} />
-          <p className="text-[12px] font-bold uppercase tracking-[0.2em]">
-            No billing records found
-          </p>
-        </div>
-      </section>
-    );
-  }
+  const [estOpen, setEstOpen] = useState(false);
 
   const currentItems = items.filter(i => i.status !== "Estimated");
   const totalBilled  = currentItems.reduce((s, i) => s + i.amount, 0);
@@ -60,7 +45,21 @@ export default function BillingAccordion({ items }: BillingAccordionProps) {
       minimumFractionDigits: 0,
     }).format(amount);
 
-  const [estOpen, setEstOpen] = useState(false);
+  if (items.length === 0) {
+    return (
+      <section
+        id="billing"
+        className="bg-white border border-navy/10 p-8 text-center print-white-bg"
+      >
+        <div className="flex flex-col items-center gap-3 opacity-30">
+          <Receipt size={48} strokeWidth={1} />
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em]">
+            No billing records found
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="billing">
