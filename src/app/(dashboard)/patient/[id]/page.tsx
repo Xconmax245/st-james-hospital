@@ -89,17 +89,17 @@ const DEMO_DATA = {
       date: "21 APR 2026" 
     },
     { 
-      description: "Post-Op Physical Therapy", 
-      category: "Rehabilitation", 
-      amount: 2850, 
+      description: "Pharmacy & Clinical Supplies", 
+      category: "Medical Supplies", 
+      amount: 3350, 
       status: "Paid" as const, 
       date: "28 APR 2026" 
     },
     { 
-      description: "Acute Inpatient Stay (Private)", 
+      description: "Post-Operative Inpatient Care", 
       category: "Accommodation", 
-      amount: 15500, 
-      status: "Paid" as const, 
+      amount: 15000, 
+      status: "Pending" as const, 
       date: "30 APR 2026" 
     },
   ]
