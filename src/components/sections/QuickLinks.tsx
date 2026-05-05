@@ -24,7 +24,7 @@ const links = [
 
 export default function QuickLinks() {
   return (
-    <section className="bg-warm-white">
+    <section className="bg-warm-white py-8 sm:py-12">
       <div className="container">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-space-2">
           {links.map((link, i) => (
